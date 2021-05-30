@@ -18,6 +18,7 @@ public class Message {
 	public static String employerAdded = "Employer added";
 	public static String employerUpdated = "Employer updated";
 	public static String employerDeleted = "Employer deleted";
+	public static String employersListed = "Employers are Listed";
 	//Job Title's messages
 	public static String jobTitleAdded = "Job Tittle is added";
 	public static String jobTitleDeleted = "Job Tittle is deleted";
@@ -28,4 +29,7 @@ public class Message {
 	public static String userIsNotValid = "this user is not valid";
 	public static String nationalIdentityAlreadyExist = "This national identity already exist";
 	public static String emailAddresAlreadyUsed = "this email adress already used";
+	public static String emailDomainError = "Email domain adress error";
+	public static String passwordsAreNotSame = "Passwords are not same";
+	public static String jobTittleAlreadyInserted = "This job title already inserted";
 }
