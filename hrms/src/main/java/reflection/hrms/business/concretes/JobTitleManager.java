@@ -4,8 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import reflection.hrms.business.abstracts.JobTitleService;
+import reflection.hrms.business.constants.Message;
+import reflection.hrms.core.utilities.results.DataResult;
+import reflection.hrms.core.utilities.results.Result;
+import reflection.hrms.core.utilities.results.SuccessDataResult;
+import reflection.hrms.core.utilities.results.SuccessResult;
 import reflection.hrms.dataAccess.abstracts.JobTitleDao;
 import reflection.hrms.entities.concretes.JobTitle;
 
@@ -20,32 +26,35 @@ public class JobTitleManager implements JobTitleService{
 	}
 
 	@Override
-	public List<JobTitle> getAll() {
-		return this.jobTitleDao.findAll();
+	public DataResult<List<JobTitle>> getAll() {
+		return new SuccessDataResult<List<JobTitle>>(this.jobTitleDao.findAll());
 	}
 
 	@Override
-	public JobTitle getById() {
-		// TODO Auto-generated method stub
-		return null;
+	public DataResult<JobTitle> getById(int id) {
+		JobTitle temp = this.jobTitleDao.getOne(id); 
+		return new SuccessDataResult<JobTitle>(temp);
 	}
 
 	@Override
-	public void add() {
-		// TODO Auto-generated method stub
-		
+	public Result add(JobTitle jobTitle) {
+		this.jobTitleDao.save(jobTitle);
+		return new SuccessResult(Message.jobTitleAdded);
 	}
 
 	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
+	public Result delete(JobTitle jobTitle) {
+		return new SuccessResult(Message.jobTitleDeleted);
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public Result update(JobTitle jobTitle) {
+		return new SuccessResult(Message.jobTitleUpdated);
+	}
+
+	@Override
+	public DataResult<JobTitle> getByTitle(String title) {
+		return new SuccessDataResult<JobTitle>(this.jobTitleDao.findByTitleIs(title));
 	}
 
 }

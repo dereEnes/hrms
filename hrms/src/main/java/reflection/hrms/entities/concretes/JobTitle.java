@@ -3,11 +3,11 @@ package reflection.hrms.entities.concretes;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Job_positions")
+@Table(name="job_positions")
 public class JobTitle {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
