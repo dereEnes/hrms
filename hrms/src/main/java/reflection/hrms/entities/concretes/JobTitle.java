@@ -1,18 +1,26 @@
 package reflection.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="job_positions")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class JobTitle {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="job_title_id")
 	private int id;
 	
 	@Column(name="title")
 	private String title;
+	
+	@OneToMany(mappedBy = "jobTitle")
+	private List<JobAdvertisement> jobAdvertisements;
 	
 	public JobTitle() {
 		

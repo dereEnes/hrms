@@ -25,6 +25,12 @@ public class Message {
 	public static String jobTitleUpdated = "Job Tittle is updated";
 	public static String jobTitlesListed = "Job Tittle are listed";
 	
+	//Job Advert's messages
+	public static String jobAdvertisementAdded = "Advert is added";
+	public static String jobAdvertisementDeleted = "Advert is deleted";
+	public static String jobAdvertisementUpdated = "Advert is updated";
+	public static String jobAdvertisementsListed = "Adverts are  listed";
+	
 	public static String nullField = "Please make sure there is not empty field";
 	public static String userIsNotValid = "this user is not valid";
 	public static String nationalIdentityAlreadyExist = "This national identity already exist";

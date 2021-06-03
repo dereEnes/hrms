@@ -6,9 +6,11 @@ import java.util.regex.Pattern;
 public class Email {
 
 	public static boolean isEmailCorrect(String webSite, String email) {
-		int start = webSite.indexOf("@");
-		Pattern pattern = Pattern.compile(webSite.substring(start));
-		Matcher matcher = pattern.matcher(email);
+		
+		int start = email.indexOf("@");
+		Pattern pattern = Pattern.compile(email.substring(start+1));
+		Matcher matcher = pattern.matcher(webSite);
 		return matcher.find();
+
 	}
 }

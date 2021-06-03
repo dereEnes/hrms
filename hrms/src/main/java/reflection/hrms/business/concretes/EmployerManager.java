@@ -36,15 +36,15 @@ public class EmployerManager implements EmployerService{
 	@Override
 	public Result add(RegisterEmployerDto employerDto) {
 		
-		if(employerDto.getPassword() != employerDto.getPasswordRepeat()) {
+		if(!employerDto.getPassword().equals(employerDto.getPasswordRepeat())) {
 			return new ErrorResult(Message.passwordsAreNotSame);
 		}
 		
-		if(checkForNullValue(employerDto)) {
+		if(!checkForNullValue(employerDto)) {
 			return new ErrorResult(Message.nullField);
 		}
 		
-		if(this.userService.getUserByEmail(employerDto.getEmail()) != null) {
+		if(this.userService.getUserByEmail(employerDto.getEmail()).getData() != null) {
 			return new ErrorResult(Message.emailAddresAlreadyUsed);
 		}
 		
@@ -79,6 +79,11 @@ public class EmployerManager implements EmployerService{
 	@Override
 	public DataResult<List<Employer>> getAll() {
 		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(),Message.employersListed);
+	}
+
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return new SuccessDataResult<Employer>(this.employerDao.getOne(id));
 	}
 	
 	

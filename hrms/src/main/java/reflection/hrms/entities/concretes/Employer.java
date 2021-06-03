@@ -1,18 +1,24 @@
 package reflection.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class Employer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="users_id")
 	private int id;
 	
@@ -30,6 +36,9 @@ public class Employer {
 	
 	@Column(name="is_email_verified")
 	private boolean isEmailVerified;
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvertisement> jobAdvertisements;
 
 	public Employer() {
 		super();
